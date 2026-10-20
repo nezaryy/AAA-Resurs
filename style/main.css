@@ -93,6 +93,27 @@ html, body {
     text-shadow: 1px 1px 0px rgb(64, 64, 64);
 }
 
+.hero-text-wrap {
+    position: absolute;
+    top: 160px;
+    left: 5%;
+    z-index: 11;
+    max-width: 85%;
+}
+
+
+@media (max-width: 768px) {
+    .hero-text-wrap {
+        top: 60px;
+        left: 5%;
+    }
+
+    .p-title {
+        font-size: 7vw;
+        -webkit-text-stroke: 0.5px black;
+    }
+}
+
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
