@@ -22,7 +22,7 @@
         <img class="hero-bg" src="image/Image.png" alt="Главный баннер">
         <img class="hero-logo" src="image/Screenshot_1-photoaidcom-cropped (1).png" alt="логотип">
         
-        <div class="title">
+        <div style="position: absolute; top: 160px; left: 5%;">
             <p class="p-title">
                 Изготовление<br>
                 технологической<br>
@@ -59,8 +59,6 @@
         </div>
 
 
-
-
         
         <div class="section-title">
             <h2>Выпускаемая продукция</h2>
@@ -94,31 +92,23 @@
             </p>
         </div>
 
-    
-        <section class="certificates-section">
-            <div class="section-title">
-                <h2>Сертификаты и лицензии</h2>
-                <div class="title-line"></div>
+        <div class="certificates-carousel">
+            <div class="certificates-tape">
+                <div class="certificate-item">
+                    <img src="assets/photo-certificates/1.jpg" alt="Сертификат 1">
+                </div>
+                <div class="certificate-item">
+                    <img src="assets/photo-certificates/2.jpg" alt="Сертификат 2">
+                </div>
+                <div class="certificate-item">
+                    <img src="assets/photo-certificates/3.jpg" alt="Сертификат 3">
+                </div>
             </div>
 
-            <div class="certificates-grid">
-                <div class="certificate-card">
-                    <div class="cert-img-wrapper">
-                        <img src="image/Сертификат 1.jpg" alt="Сертификат 1">
-                    </div>
-                </div>
-                <div class="certificate-card">
-                    <div class="cert-img-wrapper">
-                        <img src="image/Сертификат 2.jpg" alt="Сертификат 2">
-                    </div>
-                </div>
-                <div class="certificate-card">
-                    <div class="cert-img-wrapper">
-                        <img src="image/Снимок экрана в 2026-10-17 17-52-41.png" alt="Благодарность">
-                    </div>
-                </div>
-            </div>
-        </section>
+            <button class="cert-btn-prev">&lt;</button>
+            <button class="cert-btn-next">&gt;</button>
+        </div>
+
 
 
         <div class="map-heading-block">
@@ -194,14 +184,14 @@
 
 
 
-    <!-- Блок-карта с кнопкой перехода на точный проверенный адрес в 2ГИС -->
+   
     <div class="map-container">
         
-        <!-- Окно-подложка по центру вашей фоновой сетки -->
+
         <div class="map-overlay-menu">
             <p class="map-menu-title">📍 Наше производство на карте:</p>
             <div class="map-menu-buttons">
-                <!-- ВСТАВЛЕНА ВАША ПРЯМАЯ ИСПРАВЛЕННАЯ ССЫЛКА НА ЛИТЕР Н -->
+               
                 <a href="https://2gis.ru/izhevsk/search/426028%20%D0%A0%D0%A4%20%D0%A3%D0%A0%20%D0%B3.%20%D0%98%D0%B6%D0%B5%D0%B2%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9F%D0%BE%D0%B9%D0%BC%D0%B0%2017%2C%20%D0%9B%D0%B8%D1%82%D0%B5%D1%80%20%D0%9D/geo/5770872726014985/53.194349%2C56.809926?floor=0&m=53.194419%2C56.809971%2F20" target="_blank" class="map-menu-btn type-prod">
                     🏭 Открыть карту / Проложить маршрут
                 </a>
@@ -217,6 +207,8 @@
 
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+    
 
     function generateImagesArray(folderPath, count, extension = 'jpeg') {
         const arr = [];
@@ -227,10 +219,6 @@
     }
 
 
-    const imagesFolder1 = generateImagesArray('assets/photo-details', 97, 'jpeg'); 
-    const imagesFolder2 = generateImagesArray('assets/photo-production', 33, 'jpeg');
-
-
     function initSlider(sliderId, imagesArray) {
         const sliderElement = document.getElementById(sliderId);
         if (!sliderElement) return;
@@ -238,7 +226,7 @@
         const track = sliderElement.querySelector('.slider-track');
         const prevBtn = sliderElement.querySelector('.prev-btn');
         const nextBtn = sliderElement.querySelector('.next-btn');
-
+        if (!track || !prevBtn || !nextBtn) return;
 
         imagesArray.forEach((src, index) => {
             const slide = document.createElement('div');
@@ -274,14 +262,13 @@
 
         function updateSlider() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-
             lazyLoadImage(currentIndex);
             lazyLoadImage(currentIndex + 1);
             if (currentIndex > 0) lazyLoadImage(currentIndex - 1);
         }
 
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (currentIndex < slides.length - 1) {
                 currentIndex++;
             } else {
@@ -290,7 +277,8 @@
             updateSlider();
         });
 
-        prevBtn.addEventListener('click', () => {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (currentIndex > 0) {
                 currentIndex--;
             } else {
@@ -302,10 +290,54 @@
         updateSlider();
     }
 
+ 
+    function initCertSlider() {
+        const carousel = document.querySelector('.certificates-carousel');
+        if (!carousel) return;
+
+        const tape = carousel.querySelector('.certificates-tape');
+        const items = carousel.querySelectorAll('.certificate-item');
+        const prevBtn = carousel.querySelector('.cert-btn-prev');
+        const nextBtn = carousel.querySelector('.cert-btn-next');
+        
+        let currentIndex = 0;
+
+        if (!tape || items.length === 0 || !prevBtn || !nextBtn) return;
+
+        function updateCarousel() {
+            tape.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.onclick = function(e) {
+            e.preventDefault();
+            if (currentIndex < items.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        };
+
+        prevBtn.onclick = function(e) {
+            e.preventDefault();
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = items.length - 1;
+            }
+            updateCarousel();
+        };
+    }
+
+    const imagesFolder1 = generateImagesArray('assets/photo-details', 97, 'jpeg'); 
+    const imagesFolder2 = generateImagesArray('assets/photo-production', 33, 'jpeg');
 
     initSlider('slider1', imagesFolder1);
     initSlider('slider2', imagesFolder2);
+    initCertSlider();
+});
 </script>
+
 
 </body>
 </html>

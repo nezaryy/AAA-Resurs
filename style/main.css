@@ -85,10 +85,12 @@ html, body {
 
 .p-title {
     color: white;
-    font-size: 3.5vw; 
+    font-size: 5vw; 
     margin: 0;
     font-weight: bold;
     line-height: 1.2;
+    -webkit-text-stroke: 1.5px black; 
+    text-shadow: 1px 1px 0px rgb(64, 64, 64);
 }
 
 .main-content {
@@ -154,6 +156,7 @@ html, body {
 }
 
 
+
 .slider-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -185,6 +188,82 @@ html, body {
         height: 300px; 
     }
 }
+
+
+.certificates-carousel {
+    position: relative;
+    width: 100%;
+    margin: 30px auto;  
+    overflow: hidden;  
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background-color: #fcfcfc; 
+}
+
+
+.certificates-tape {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; 
+}
+
+
+.certificate-item {
+    flex: 0 0 100%;    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px; 
+}
+
+
+.certificate-item img {
+    width: 100%;
+    height: auto;          
+    max-height: 80vh;      
+    display: block;
+    object-fit: contain;   
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+
+.cert-btn-prev, .cert-btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(48, 57, 82, 0.7); 
+    color: #ffffff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;       
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+
+.cert-btn-prev:hover, .cert-btn-next:hover {
+    background: #ff9f43; 
+    color: #303952;
+}
+
+
+.cert-btn-prev {
+    left: 20px;
+}
+
+
+.cert-btn-next {
+    right: 20px;
+}
+
 
 
 
