@@ -84,12 +84,12 @@ html, body {
 }
 
 .p-title {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 5vw; 
     margin: 0;
     font-weight: bold;
     line-height: 1.2;
-    -webkit-text-stroke: 1.5px black; 
+    -webkit-text-stroke: 2px rgb(4, 4, 4); 
     text-shadow: 1px 1px 0px rgb(64, 64, 64);
 }
 
@@ -99,18 +99,22 @@ html, body {
     left: 5%;
     z-index: 11;
     max-width: 85%;
+    background: rgba(0, 0, 0, 0.251);
+    backdrop-filter: blur(2px);
+    padding: 10px;
+    border-radius: 8px;
 }
 
 
 @media (max-width: 768px) {
     .hero-text-wrap {
-        top: 60px;
+        top: 75px;
         left: 5%;
     }
 
     .p-title {
         font-size: 6vw;
-        -webkit-text-stroke: 0.5px black;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
     }
 }
 
