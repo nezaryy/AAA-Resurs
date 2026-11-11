@@ -19,7 +19,7 @@
 
 
     <div class="hero-section">
-        <img class="hero-bg" src="image/Image.png" alt="Главный баннер">
+        <img class="hero-bg" src="image/1545832.png" alt="Главный баннер">
         <img class="hero-logo" src="image/Screenshot_1-photoaidcom-cropped (1).png" alt="логотип">
         
         <div class="hero-text-wrap">
@@ -37,7 +37,7 @@
         
         <p class="tagline">Инструментальный цех</p>
 
-        <h2 class="block-heading">Изготовление технологических приспособлений</h2>
+        <h2 class="block-heading">Проект автоматизации технологических процессов</h2>
 
         <div class="bio-text-block">
             <p>Наша компания предоставляет услуги по разработке и изготовлению технологической оснастки и изделий любой сложности.</p>
@@ -64,6 +64,29 @@
             <h2>Выпускаемая продукция</h2>
             <div class="title-line"></div> 
                 <div class="slider-container" id="slider1">
+                <div class="slider-track">
+
+                </div>
+                    <button class="slider-btn prev-btn">❮</button>
+                    <button class="slider-btn next-btn">❯</button>
+                </div>
+        </div>
+
+
+        <div class="bio-text-block">
+            <br>
+            <br>
+            <p>Помимо классической металлообработки и гальваники, <br>
+                ООО «ГК ААС — Ресурс» совместно с ООО «Интеллектуальные Системы» <br>
+                реализует проекты по автоматизации технологических процессов.<br>
+                Мы внедряем коллаборативную робототехнику и оснащаем как отдельные операции<br>
+                (механическая обработка, штамповка, заготовительные работы), так и целые производственные комплексы.<br>
+            </p>
+        </div>
+                <div class="section-title">
+            <h2>Подробнее</h2>
+            <div class="title-line"></div> 
+                <div class="slider-container-presentation" id="slider3">
                 <div class="slider-track">
 
                 </div>
@@ -333,10 +356,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const imagesFolder1 = generateImagesArray('assets/photo-details', 97, 'jpeg'); 
-    const imagesFolder2 = generateImagesArray('assets/photo-production', 33, 'jpeg');
+    const imagesFolder2 = generateImagesArray('assets/photo-production', 35, 'jpeg');
+    const imagesFolder3 = generateImagesArray('assets/photo-presentation', 4, 'jpeg');
 
     initSlider('slider1', imagesFolder1);
     initSlider('slider2', imagesFolder2);
+    initSlider('slider3', imagesFolder3);
     initCertSlider();
 });
 </script>
