@@ -12,8 +12,21 @@
 
     <div class="top_bar">
         <h1 class="text-bar">AAS-RESURS</h1>
-        <nav>
-            <a class="call-btn" href="#call">Связаться</a>
+        <nav class="top-nav">
+            <div class="docs-dropdown">
+                <button type="button" class="docs-btn" id="docsMenuBtn">Документы</button>
+                <div class="docs-menu" id="docsMenu">
+                    <a href="assets/docs/ААС-Ресурс_ИС (1).pdf" target="_blank" rel="noopener noreferrer">
+                        Проект автоматизации техпроцессов
+                    </a>
+                    <a href="assets/docs/Сделано в Удмуртии ООО ГК ААС-Ресурс.pdf" target="_blank" rel="noopener noreferrer">
+                        О компании
+                    </a>
+                    <a href="assets/docs/3.pdf" target="_blank" rel="noopener noreferrer">
+                        Благодарность
+                    </a>
+                </div>
+            </div>
         </nav>
     </div>
 
@@ -84,19 +97,6 @@
             </p>
         </div>
         
-        
-        <div class="section-title">
-            <h3>Подробнее</h3>
-            <div class="title-line"></div> 
-                
-                <div class="slider-container-presentation" id="slider3">
-                <div class="slider-track">
-
-                </div>
-                    <button class="slider-btn prev-btn">❮</button>
-                    <button class="slider-btn next-btn">❯</button>
-                </div>
-        </div>
 
 
         <div class="bio-text-block">
@@ -125,9 +125,6 @@
                 </div>
                 <div class="certificate-item">
                     <img src="assets/photo-certificates/2.jpg" alt="Сертификат 2">
-                </div>
-                <div class="certificate-item">
-                    <img src="assets/photo-certificates/3.jpg" alt="Сертификат 3">
                 </div>
             </div>
 
@@ -360,13 +357,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const imagesFolder1 = generateImagesArray('assets/photo-details', 97, 'jpeg'); 
     const imagesFolder2 = generateImagesArray('assets/photo-production', 35, 'jpeg');
-    const imagesFolder3 = generateImagesArray('assets/photo-presentation', 4, 'jpeg');
 
     initSlider('slider1', imagesFolder1);
     initSlider('slider2', imagesFolder2);
-    initSlider('slider3', imagesFolder3);
     initCertSlider();
 });
+
+const docsBtn = document.getElementById('docsMenuBtn');
+const docsMenu = document.getElementById('docsMenu');
+
+if (docsBtn && docsMenu) {
+    docsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        docsMenu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!docsMenu.contains(e.target) && e.target !== docsBtn) {
+            docsMenu.classList.remove('open');
+        }
+    });
+}
 </script>
 
 
